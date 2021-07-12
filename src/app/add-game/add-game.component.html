@@ -1,0 +1,52 @@
+<h3>Add New Game</h3>
+
+<div class="container mt-5">
+    <form [formGroup]="gameForm" (ngSubmit)="submitGameform()" autocomplete="off">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label>Booth Name</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="boothname" formControlName="boothname" >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label>Price Per Hour</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="price" formControlName="price" >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label>Special Feature</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" name="feature" formControlName="feature" ></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label>Image</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="file" class="form-control" accept="image/*" (change)="onFileChange($event)" formControlName="image_name" multiple >
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-sm-12">
+                        <button type="submit" [disabled]="!gameForm.valid" class="btn btn-primary float-right" >Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <!-- <pre>{{ gameForm.value | json }}</pre> -->
+                <img [src]="imageSrc" *ngIf="imageSrc" style="height: 250px; width:250px" class="img-fluid">
+            </div>
+        </div>
+        
+    </form>
+</div>

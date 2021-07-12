@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 mb-4" *ngFor="let x of gameBooth">
+            <div class="card" >
+                <!-- <img src="http://anuthiran.titanbuilders.lk/api/game_booth/upload/{{x.image_name}}" class="card-img-top h-25" alt="..."> -->
+                <img src="http://localhost/game_city/api/game_booth/upload/{{x.image_name}}" class="card-img-top h-25" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{x.boothname}}</h5>
+                  <h6>Rs. {{x.price}}</h6>
+                  <p class="card-text">{{x.feature}}</p>
+                  <!-- <button type="button" (click)="open(begin_content)"  class="btn btn-block p-3 mt-3 mb-3" [ngClass]="{'greenBtn': startBtn == true, 'redBtn' : beginBtn == true }">Start</button> -->
+                  <button *ngIf="startBtn" type="button" (click)="open(begin_content, x.id, x.price)"  class="btn btn-block btn-success p-3 mt-3 mb-3">Start</button>
+                  <button *ngIf="stopBtn" type="button" (click)="closeGame(close_content)"  class="btn btn-block btn-danger p-3 mt-3 mb-3" >Stop</button>
+                    <h5 *ngIf="showTimer" class="text-center" ><countdown-timer (zeroTrigger)="triggerFunction(close_content)" [endDate]="duration"></countdown-timer></h5>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<ng-template #begin_content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Begin to Play</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body p-5">
+      <form [formGroup]="userForm" (ngSubmit)="beginGame()" autocomplete="off" >
+          <div class="form-group row">
+                <div class="col-sm-5">
+                    <label>Customer Name</label>
+                </div>
+              <div class="col-sm-7">
+                  <input type="text" class="form-control" formControlName="customer">
+              </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-5">
+                <label>Hours</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" formControlName="hour">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-5">
+                <label>Minutes</label>
+            </div>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" formControlName="minute">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-5">
+                
+            </div>
+          <div class="col-sm-7">
+              <button class="btn btn-primary btn-block" type="submit" [disabled]="!userForm.valid" >Begin</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+  </ng-template>
+
+<ng-template #close_content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">End the Play</h4>
+        <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button> -->
+    </div>
+    <div class="modal-body p-5 text-center">
+        <p>The time for the booth AAAAA has ended for the yyyyyyyyyy.</p>
+        <p>The amout to be charged is Rs 200.00</p>
+        <button class="btn btn-success pl-4 pr-4" (click)="payAmount()" >Pay</button>
+    </div>
+
+</ng-template>
+

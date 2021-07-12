@@ -1,0 +1,7 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+
+.page_wrapper{
+    background: #fff;
+    margin:58px 0px 40px 200px;
+    padding: 40px;
+}

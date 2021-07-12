@@ -1,0 +1,35 @@
+.side-nav {
+    position: fixed;
+    top: 58px;
+    /*left: 225px;*/
+    width: 200px;
+    /* margin-left: 15px; */
+    border: none;
+    border-radius: 0;
+    overflow-y: auto;
+    background-color: #f8f8f8;
+    bottom: 0;
+    overflow-x: hidden;
+    padding-bottom: 40px;
+    padding-top: 30px;
+}
+
+.side-nav>li>a {
+    width: 180px;
+    padding: 15px 0px;
+    margin: 15px 10px;
+    color: #343a40;
+}
+
+.side-nav>li.active>a, .side-nav>li.active>a:focus, .side-nav>li.active>a:active{
+    background-color: #343a40 !important;
+    font-size: 17px;
+    box-shadow: 3px 3px 3px #ddd;
+    color: #fff;
+}
+
+.side-nav li a:hover,
+.side-nav li a:focus {
+    outline: none;
+    background-color: #ddd !important;
+}
